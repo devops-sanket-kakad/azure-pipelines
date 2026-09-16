@@ -1,0 +1,14 @@
+trigger:
+    - main
+pool:
+    vmImage: ubuntu-latest
+
+steps:
+    - script: echo "Hello from Azure Pipelines!"
+      displayName: "Say Hello"
+
+    - script: uname -a
+      displayName: "Show Operating System"
+    
+    - script: pwd
+      displayName: "display current directory"
