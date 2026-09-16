@@ -17,3 +17,14 @@ steps:
   - script: |
       pytest
     displayName: 'Run unit tests'
+
+  - script: |
+      mkdir -p '$(Build.ArtifactStagingDirectory)/app' |
+       cp app/app.py app/test_app.py requirements.txt $(Build.ArtifactStagingDirectory)/app/
+    displayName: 'Prepare application artifact'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)/app'
+      artifact: 'application'
+    displayName: 'Publish application artifact'
